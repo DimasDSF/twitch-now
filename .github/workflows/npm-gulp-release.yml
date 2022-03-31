@@ -3,8 +3,6 @@ name: NodeJS with Gulp
 on:
   push:
     branches: [ release ]
-  pull_request:
-    branches: [ release ]
 
 jobs:
   build:
@@ -27,11 +25,14 @@ jobs:
         npm install
         gulp chrome
         
+    - name: Zip the build
+      run: zip latest-auto-release.zip ./build/chrome/* -r
+        
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
         prerelease: false
         files: |
-          build/chrome/*
+          latest-auto-release.zip
       id: "automatic_releases"
