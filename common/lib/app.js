@@ -80,7 +80,7 @@
     var streamsToShow = streamList.slice(0, displayCount);
     var streamsOther = streamList.slice(displayCount, streamList.length);
     var streamTitles = streamsOther.map(function (c) {
-      return c.get("name");
+      return c.get("name") + " - " + c.get("gamename");
     });
 
     if (bgApp.richNotificationsSupported()) {
@@ -109,7 +109,7 @@
         try {
           let opt = {
             type: "basic",
-            title: streamsToShow[num].get("name") + "-" + streamsToShow[num].get("gamename"),
+            title: streamsToShow[num].get("name") + " - " + streamsToShow[num].get("gamename"),
             message: streamsToShow[num].get("gamename") + "\n" + streamsToShow[num].get("title"),
             iconUrl: iconUrl
           }
