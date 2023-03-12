@@ -362,6 +362,14 @@
       value: "viewer_count|-1"
     },
     {
+      id: "ignoredCategories",
+      desc: "Ignored Categories (as seen in the Category name, separated by commas)",
+      type: "text",
+      text: true,
+      show: true,
+      value: ""
+    },
+    {
       id: "themeType",
       desc: "__MSG_m55__",
       type: "radio",
@@ -1174,10 +1182,12 @@
     initialize: function () {
       var channelName = this.get("user_name");
       var streamType = this.get("type");
+      var gameName = this.get("game_name");
       var isVodcast = ['rerun', 'watch_party'].includes(streamType);
       this.set({
         vodcast: isVodcast,
-        name: channelName
+        name: channelName,
+        gamename: gameName
       },
         { silent: true });
     },
@@ -1337,6 +1347,14 @@
       if (settings.get("hideVodcasts").get("value")) {
         res.data = res.data.filter(function (v) {
           if (['rerun', 'watch_party'].includes(v.type)) {
+            return false;
+          }
+          return true;
+        })
+      }
+      if (settings.get("ignoredCategories").get("value").length) {
+        res.data = res.data.filter(function (v) {
+          if (settings.get("ignoredCategories").get("value").split(",").includes(v.game_name)) {
             return false;
           }
           return true;
