@@ -1,8 +1,8 @@
-name: NodeJS Gulp Build and AutoRelease
+name: NodeJS Gulp Build DevBranch and AutoPreRelease
 
 on:
   push:
-    branches: [ release ]
+    branches: [ dev ]
 
 jobs:
   build:
@@ -26,13 +26,13 @@ jobs:
         gulp chrome
         
     - name: Zip the build
-      run: zip latest-auto-release.zip ./build/chrome/* -r
+      run: zip dev-build.zip ./build/chrome/* -r
         
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
-        prerelease: false
+        automatic_release_tag: "devbuild"
+        prerelease: true
         files: |
-          latest-auto-release.zip
-      id: "automatic_releases"
+          dev-build.zip
+      id: "dev_releases"
