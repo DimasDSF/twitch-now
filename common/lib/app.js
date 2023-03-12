@@ -109,7 +109,7 @@
         try {
           let opt = {
             type: "basic",
-            title: streamsToShow[num].get("name"),
+            title: streamsToShow[num].get("name") + "-" + streamsToShow[num].get("gamename"),
             message: streamsToShow[num].get("gamename") + "\n" + streamsToShow[num].get("title"),
             iconUrl: iconUrl
           }
