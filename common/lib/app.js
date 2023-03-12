@@ -110,7 +110,7 @@
           let opt = {
             type: "basic",
             title: streamsToShow[num].get("name"),
-            message: streamsToShow[num].get("game_name") + "\n" + streamsToShow[num].get("title"),
+            message: streamsToShow[num].get("gamename") + "\n" + streamsToShow[num].get("title"),
             iconUrl: iconUrl
           }
           bgApp.notificationIds[notificationId] = streamsToShow[num];
