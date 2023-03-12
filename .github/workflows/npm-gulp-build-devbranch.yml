@@ -1,4 +1,4 @@
-name: NodeJS Gulp Build and AutoRelease
+name: NodeJS Gulp Build DevBranch and AutoPreRelease
 
 on:
   push:
