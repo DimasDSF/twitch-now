@@ -80,7 +80,7 @@
     var streamsToShow = streamList.slice(0, displayCount);
     var streamsOther = streamList.slice(displayCount, streamList.length);
     var streamTitles = streamsOther.map(function (c) {
-      return c.get("name");
+      return c.get("name") + " - " + c.get("gamename");
     });
 
     if (bgApp.richNotificationsSupported()) {
@@ -109,8 +109,8 @@
         try {
           let opt = {
             type: "basic",
-            title: streamsToShow[num].get("name"),
-            message: streamsToShow[num].get("game_name") + "\n" + streamsToShow[num].get("title"),
+            title: streamsToShow[num].get("name") + " - " + streamsToShow[num].get("gamename"),
+            message: streamsToShow[num].get("gamename") + "\n" + streamsToShow[num].get("title"),
             iconUrl: iconUrl
           }
           bgApp.notificationIds[notificationId] = streamsToShow[num];
@@ -360,6 +360,14 @@
       ],
       show: true,
       value: "viewer_count|-1"
+    },
+    {
+      id: "ignoredCategories",
+      desc: "Ignored Categories (as seen in the Category name, separated by commas)",
+      type: "text",
+      text: true,
+      show: true,
+      value: ""
     },
     {
       id: "themeType",
@@ -1174,10 +1182,12 @@
     initialize: function () {
       var channelName = this.get("user_name");
       var streamType = this.get("type");
+      var gameName = this.get("game_name");
       var isVodcast = ['rerun', 'watch_party'].includes(streamType);
       this.set({
         vodcast: isVodcast,
-        name: channelName
+        name: channelName,
+        gamename: gameName
       },
         { silent: true });
     },
@@ -1337,6 +1347,14 @@
       if (settings.get("hideVodcasts").get("value")) {
         res.data = res.data.filter(function (v) {
           if (['rerun', 'watch_party'].includes(v.type)) {
+            return false;
+          }
+          return true;
+        })
+      }
+      if (settings.get("ignoredCategories").get("value").length) {
+        res.data = res.data.filter(function (v) {
+          if (settings.get("ignoredCategories").get("value").split(",").includes(v.game_name)) {
             return false;
           }
           return true;
