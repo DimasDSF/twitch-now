@@ -655,7 +655,7 @@
         }
         return false;
       }
-      else if (type == 'mcheckbox') {
+      else if (type == 'mcheckbox' || type == 'text') {
         return typeof v === 'string';
       }
 
