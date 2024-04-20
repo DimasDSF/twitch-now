@@ -36,7 +36,7 @@ jobs:
         gulp firefox
 
     - name: Zip the firefox build
-      run: zip latest-firefox-auto-release.zip ./build/firefox/* -r
+      run: zip dev-firefox-build.zip ./build/firefox/* -r
 
     - name: Create a dev release
       uses: "marvinpinto/action-automatic-releases@latest"
@@ -46,4 +46,5 @@ jobs:
         prerelease: true
         files: |
           dev-chrome-build.zip
+          dev-firefox-build.zip
       id: "dev_releases"
