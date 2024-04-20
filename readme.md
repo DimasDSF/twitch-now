@@ -1,13 +1,15 @@
-# Twitch Now
-
-* Chrome version: https://chrome.google.com/webstore/detail/twitch-now/nlmbdmpjmlijibeockamioakdpmhjnpk
-* Firefox version: https://addons.mozilla.org/firefox/addon/twitch-now/
-* Opera version: https://addons.opera.com/extensions/details/twitch-now/
+# Twitch Now(Personal update + Features Fork)
 
 ## Requirements
 
 * Node.js
 * Gulp
+
+## Current new features
+
+- Fixed settings menu that properly saves text fields
+- A new field that allows blocking specific Games/Categories (Even followed streamers do not appear in the list if they stream a blacklisted category)
+- A more verbose notification text, now shows the category alongside the streamers name.
 
 ## How to build
 
@@ -32,16 +34,7 @@ $ run firefox, goto about:debugging, then load build/firefox/manifest.json
 ```
 
 To build Opera version:
+_Not tested but should work as it uses the same build mechanism as everything else._
 ```
 $ gulp opera
 ```
-
-## Translation guide
-
-This guide will help you to get prepared for translation. Let's start!
-
-1.  Register your account first. 
-2.  Visit the project page again and choose "Fork" option available in top-right corner. This will copy whole repository to your account.
-3.  Hit plus icon to create new translation file in "_locales" directory. If your language directory does not exists yet, feel free to create one (https://developer.chrome.com/webstore/i18n#localeTable)
-4.  When you're done, you can now commit and push your changes. The new files will appear on you Github account.
-5.  You're almost done. The only thing left is to create a pull request so I can see that you want to apply your changes. To do it, press the "Pull request" button. Make sure, the target repository is correct and press "Send pull request"
