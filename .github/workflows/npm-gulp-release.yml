@@ -10,29 +10,41 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [20.x]
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: Install Dependencies
       run: |
         npm install
+
+    - name: Build Chrome
+      run: |
         gulp chrome
         
-    - name: Zip the build
-      run: zip latest-auto-release.zip ./build/chrome/* -r
-        
+    - name: Zip the chrome build
+      run: zip latest-chrome-auto-release.zip ./build/chrome/* -r
+
+    - name: Build Firefox
+      run: |
+        gulp firefox
+
+    - name: Zip the firefox build
+      run: zip latest-firefox-auto-release.zip ./build/firefox/* -r
+
+    - name: Create a release
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
         prerelease: false
         files: |
-          latest-auto-release.zip
+          latest-chrome-auto-release.zip
+          latest-firefox-auto-release.zip
       id: "automatic_releases"
