@@ -7,8 +7,8 @@
 
 ## Current new features
 
-- Fixed settings menu that properly saves text fields
-- A new field that allows blocking specific Games/Categories (Even followed streamers do not appear in the list if they stream a blacklisted category)
+- Fixed settings menu so it now properly saves text fields
+- A new field that allows blocking specific Games/Categories from being shown in notifications/live streamers list (Even followed streamers do not appear in the list if they stream a blacklisted category)
 - A more verbose notification text, now shows the category alongside the streamers name.
 
 ## How to build
