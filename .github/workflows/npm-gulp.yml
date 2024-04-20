@@ -22,7 +22,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: Install Dependencies
       run: |
         npm install
+    
+    - name: Build Chrome
+      run: |
         gulp chrome
+
+    - name: Build Firefox
+      run: |
+        gulp firefox
