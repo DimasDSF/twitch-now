@@ -1,7 +1,7 @@
 {
-  "name": "twitch-now",
+  "name": "twitch-now-dimas-dsf-s-fork",
   "version": "1.2.1",
-  "description": "An extension notifying when your followed streamers go live and shows a list of currently streaming followed streamers",
+  "description": "An extension notifying when your followed streamers on Twitch go live and shows a list of currently streaming followed streamers",
   "dependencies": {
     "semver": "^7.5.2",
     "through2": "^2.0.5"

@@ -1,9 +1,9 @@
 {
-  "name": "Twitch Now",
-  "version": "1.1.216",
+  "name": "Twitch Now Dimas DSFs Fork",
+  "version": "1.2.1",
   "default_locale": "en",
   "manifest_version": 2,
-  "description": "Explore games & track your favorite streams on Twitch",
+  "description": "An extension notifying when your followed streamers on Twitch go live and shows a list of currently streaming followed streamers",
   "content_scripts": [
     {
       "run_at": "document_start",
