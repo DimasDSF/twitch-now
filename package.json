@@ -19,7 +19,7 @@
     "gulp-util": "^3.0.7",
     "gulp-wrap": "^0.15.0",
     "gulp-zip": "^3.0.2",
-    "jshint": "^2.10.3",
+    "jshint": "^2.13.6",
     "merge-stream": "^1.0.0",
     "request": "^2.88.0",
     "run-sequence": "^1.1.4"
